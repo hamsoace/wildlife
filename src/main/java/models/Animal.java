@@ -1,7 +1,7 @@
 package models;
 
 public abstract class Animal{
-    private int id;
+    public int id;
     private String name;
 
     public Animal(int id, String name) {

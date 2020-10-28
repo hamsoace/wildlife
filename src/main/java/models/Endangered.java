@@ -5,8 +5,8 @@ public class Endangered{
     private int age;
     private String health;
 
-    public Endangered(int age, String health) {
-        super();
+    public Endangered(int id, String name, int age, String health) {
+        super(id, name);
         this.age = age;
         this.health = health;
     }
