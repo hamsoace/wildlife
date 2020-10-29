@@ -2,18 +2,23 @@ CREATE DATABASE wildlife;
 
 \c wildlife
 
-CREATE TABLE locations(
-    id SERIAL PRIMARY KEY,
-    age INTEGER,
-    name VARCHAR,
-    health VARCHAR,
-    animalRangerId INTEGER,
-    locationId INTEGER
+CREATE TABLE animalRangers(
+id serial PRIMARY KEY,
+name varchar
 );
 
-CREATE TABLE animalRangers(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR,
-    badge INTEGER,
-    telephone VARCHAR
+CREATE TABLE animals(
+id serial PRIMARY KEY,
+name varchar,
+health varchar,
+age varchar,
+type varchar
+);
+
+CREATE TABLE sightings(
+id serial PRIMARY KEY,
+animalname varchar,
+location varchar,
+timestamp timestamp,
+rangerid int
 );

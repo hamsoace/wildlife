@@ -1,15 +1,23 @@
 package models;
 
+import DB.DB;
+import org.sql2o.Connection;
+import org.sql2o.Sql2oException;
+
+import java.util.List;
+import java.util.Objects;
+
 public class AnimalRanger {
     private int id;
     private String name;
-    private int badge;
-    private String telephone;
 
-    public AnimalRanger(String name, int badge, String telephone) {
+    public AnimalRanger(String name) {
         this.name = name;
-        this.badge = badge;
-        this.telephone = telephone;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     public int getId() {
@@ -28,19 +36,44 @@ public class AnimalRanger {
         this.name = name;
     }
 
-    public int getBadge() {
-        return badge;
+    public void save(){
+        String sql = "INSERT INTO animalRangers(name) VALUES (:name)";
+        try (Connection con = DB.sql2o.open()){
+            this.id = (int) con.createQuery(sql, true)
+            .addParameter("name",this.name)
+            .executeUpdate().getKey();
+        }catch (Sql2oException ex){
+            System.out.println(ex);
+        }
     }
 
-    public void setBadge(int badge) {
-        this.badge = badge;
+    public static List<AnimalRanger> all(){
+        try (Connection con = DB.sql2o.open()){
+            return con.createQuery("SELECT * FROM animalRangers")
+                    .executeAndFetch(AnimalRanger.class);
+        }
     }
 
-    public String getTelephone() {
-        return telephone;
+    public static AnimalRanger find(int searchId){
+        try(Connection con = DB.sql2o.open()){
+            return con.createQuery("SELECT * FROM animalRangers WHERE id=:id")
+            .addParameter("id", searchId).executeAndFetchFirst(AnimalRanger.class);
+        }
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public List<Sightings> mySightings(){
+        String sql = "SELECT * FROM sightings WHERE rangerid = :id";
+        try (Connection con = DB.sql2o.open()){
+            return con.createQuery(sql).addParameter("id", this.id)
+                    .executeAndFetch(Sightings.class);
+        }
     }
+
+    public void delete(){
+        try (Connection con = DB.sql2o.open()){
+            con.createQuery("DELETE FROM animalRangers WHERE id=:id")
+                    .addParameter("id", this.id).executeUpdate();
+        }
+    }
+
 }
