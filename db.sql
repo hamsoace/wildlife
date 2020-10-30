@@ -1,3 +1,5 @@
+SET MODE postgresql;
+
 CREATE DATABASE wildlife;
 
 \c wildlife
