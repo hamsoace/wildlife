@@ -25,6 +25,15 @@ public class Sightings {
     }
 
     @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sightings sightings = (Sightings) o;
+        return animalName.equals(sightings.animalName) && rangerId == sightings.rangerId
+                && rangerId == sightings.rangerId && Objects.equals(location, sightings.location);
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(animalName, location, rangerId);
     }
