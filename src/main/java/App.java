@@ -41,7 +41,7 @@ public class App{
             return new ModelAndView(model, "endangered.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/animals/non-endangered", (request, response) -> {
+        get("/animals/nonendangered", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("nonendangered", NonEndangered.all());
             return new ModelAndView(model, "nonendangered.hbs");
@@ -54,7 +54,7 @@ public class App{
         }, new HandlebarsTemplateEngine());
 
 
-        post("/sighting/new", (request, response) -> {
+        post("/location/new", (request, response) -> {
             Map<String, Object>model = new HashMap<>();
             String rangerName = request.queryParams("rangerName").trim();
             String animalName = request.queryParams("animalName").trim();
@@ -111,7 +111,7 @@ public class App{
             return new ModelAndView(model, "rangers.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("rangers/:id/sightings/new", (request, response) -> {
+        get("rangers/:id/location/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int id = Integer.parseInt(request.params("id"));
             AnimalRanger specificRanger = AnimalRanger.find(id);
