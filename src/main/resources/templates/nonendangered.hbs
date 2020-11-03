@@ -24,7 +24,7 @@
 {{/partial}}
 
 {{#partial "content"}}
-    {{#if normal}}
+    {{#if nonendangered}}
         <table class="table text-center">
             <h4 class="text-center">All the non-endangered animals sighted.</h4>
             <thead class="thead-dark">
@@ -35,7 +35,7 @@
             </tr>
             </thead>
             <tbody>
-            {{#each normal}}
+            {{#each nonendangered}}
                 <tr>
                     <td>{{name}}</td>
                     <td>{{health}}</td>
