@@ -6,12 +6,12 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/animals/endangered">Endangered</a>
-            <a class="dropdown-item" href="/animals/not-endangered">Not Endangered</a>
+            <a class="dropdown-item" href="/animals/nonendangered">Not Endangered</a>
         </div>
     </li>
     <li class="nav-item"><a class="nav-link" href="/rangers">Our Rangers</a></li>
-    <li class="nav-item"><a class="nav-link" href="/sightings">Sighting Locations</a></li>
-    <li class="nav-item active"><a class="nav-link" href="/sighting/new">New Sighting</a></li>
+    <li class="nav-item"><a class="nav-link" href="/location">Sighting Locations</a></li>
+    <li class="nav-item active"><a class="nav-link" href="/location/new">New Sighting</a></li>
 {{/partial}}
 
 {{#partial "preContent"}}
@@ -26,13 +26,13 @@
 {{#partial "content"}}
     <h3 class="text-center">Report a new sighting!</h3>
     {{#if specificRanger}}
-        <form action="/rangers/{{specificRanger.id}}/sighting/new" method="post">
+        <form action="/rangers/{{specificRanger.id}}/location/new" method="post">
             <div class="form-group">
                 <label for="rangerName">Ranger Name</label>
                 <input type="text" id="rangerName" name="rangerName" class="form-control" value="{{specificRanger.name}}" disabled>
             </div>
     {{else}}
-        <form action="/sighting/new" method="post">
+        <form action="/location/new" method="post">
             <div class="form-group">
                 <label for="rangerName">Ranger Name</label>
                 <input type="text" id="rangerName" name="rangerName" class="form-control" required>
