@@ -32,4 +32,10 @@ public class NonEndangeredTest {
         NonEndangered nonEndangered = newNonEndangered();
         assertEquals("Malnourished", nonEndangered.getHealth());
     }
+
+    @Test
+    public void getStatus_returnAnimalsStatus(){
+        NonEndangered nonEndangered = newNonEndangered();
+        assertEquals("Non Endangered", nonEndangered.getType());
+    }
 }
