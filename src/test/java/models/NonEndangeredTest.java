@@ -18,7 +18,7 @@ public class NonEndangeredTest {
     @Test
     public void getName_returnAnimalsName(){
         NonEndangered nonEndangered = newNonEndangered();
-        assertEquals("Panda", nonEndangered.getAge());
+        assertEquals("Panda", nonEndangered.getName());
     }
 
     @Test

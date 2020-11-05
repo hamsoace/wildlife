@@ -1,0 +1,27 @@
+*{
+    font-family: 'Itim', cursive;
+}
+.animal-jumbotron {
+    background: url('/images/rhino.jpg');
+    background-position-y: center;
+    background-size: cover;
+    background-repeat: none;
+    text-align: right;
+    color: white;
+}
+
+.ranger-jumbotron {
+    background: url('/images/africa.jpg');
+    background-position-y: 72%;
+    background-size: cover;
+    background-repeat: none;
+    color: white;
+}
+
+#complete-jumbotron {
+    background: url('/images/panda.jpg');
+    background-position-y: 60%;
+    background-size: cover;
+    background-repeat: none;
+    color: white;
+}
